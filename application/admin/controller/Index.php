@@ -2,7 +2,7 @@
 namespace app\admin\controller;
 
 use think\Controller;
-
+use app\admin\model\Zixun;
 class Index extends Controller
 {
 	/**
@@ -46,12 +46,11 @@ class Index extends Controller
 	 *@author  童立京
 	 *@time    2018-8-2
 	 */
-	public function wenzhang_xinwen()
+	public function wenzhang_xinwen()  
 	{
+
 		return $this->fetch();
 	}
-
-
 	/**
 	 *@content 后台页面 ---品牌管理
 	 *@return  mixed
@@ -72,7 +71,9 @@ class Index extends Controller
 	 */
 	public function xiangce_guanli()
 	{
-		return $this->fetch();
+		$user = new Zixun();
+		$data =$user->selects();
+		return view('xiangce_guanli',['data'=>$data]);
 	}
 
 	/**
@@ -108,5 +109,35 @@ class Index extends Controller
 	{
 		return $this->fetch();
 	}
+    /**
+	 *@content 后台页面 ---调用资讯添加页面方法
+	 *@return  mixed
+	 *@author  muyang
+	 *@time    2018-8-3
+	 */
+	public function information()
+	{
+		return $this->fetch();
+	}
+
+	/**
+	 *@content 后台页面 ---资讯添加方法
+	 *@return  mixed
+	 *@author  muyang
+	 *@time    2018-8-3
+	 */
+	public function information_add()
+	{
+		$data = $_POST;
+		$data['time'] = date('Y-m-d',time());
+		$user = new Zixun();
+		$info =$user->inserts($data);
+		if ($info) {
+			$this->success('添加成功',('index/xiangce_guanli'));
+		}
+	}
+	
+
+
 }
 ?>
