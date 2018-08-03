@@ -43,10 +43,10 @@
 								<td class="t_2_1"><a href="huodong_content.html"><?=$value['content']?></a></td>
 								<td class="t_3"><?=$value['time']?></td>
 								<td class="t_5">本站原创</td>
-								<td class="t_4"><div class="btn"><a class="Top">置顶</a><a href="#" class="modify">修改</a><a href="#" class="delete">删除</a></div></td>
+								<td class="t_4"><div class="btn"><a class="Top">置顶</a>
+								<a href="updates?id=<?=$value['id']?>" class="modify">修改</a><a href="deletes?id=<?=$value['id']?>" class="delete">删除</a></div></td>
 							</tr>
 							<?php endforeach ?>
-							
 							</tbody>
 							</table>
 					

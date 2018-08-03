@@ -135,6 +135,42 @@ class Index extends Controller
 		if ($info) {
 			$this->success('添加成功',('index/xiangce_guanli'));
 		}
+		else
+		{
+			$this->error('添加失败');
+		}
+	}
+	public function updates()
+	{
+		$id = $_GET['id'];
+		$user = new Zixun();
+		$data =$user->finds($id);
+		return view('updates',['data'=>$data]);
+	}
+	public function updates_add()
+	{
+		$data = $_POST;
+		$id = $data['id'];
+		$user = new Zixun();
+		$info =$user->updates($id,$data);
+		if ($info) {
+			$this->success('修改成功',('index/xiangce_guanli'));
+		}else
+		{
+			$this->error('修改失败');
+		}
+	}
+	public function deletes()
+	{
+		$id = $_GET['id'];
+		$user = new Zixun();
+		$info =$user->deletes($id);
+		if ($info) {
+			$this->success('删除成功',('index/xiangce_guanli'));
+		}else
+		{
+			$this->error('删除失败');
+		}
 	}
 	
 
