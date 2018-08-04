@@ -42,6 +42,15 @@ class Zixun extends Model
 	{
 		return Db::table('zixun')->where("id =$id ")->select();
 	}
+	// 定义分页类
+	public function pages()
+	{
+		// 查询状态为1的用户数据 并且每页显示10条数据
+		$data = Db::table('zixun')->paginate(5);
+		// $page = $data->render();
+		return $data;
+		// return $page;
+	}
 	
 
 }

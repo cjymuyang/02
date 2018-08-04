@@ -72,8 +72,12 @@ class Index extends Controller
 	public function xiangce_guanli()
 	{
 		$user = new Zixun();
-		$data =$user->selects();
-		return view('xiangce_guanli',['data'=>$data]);
+		$data =$user->pages();
+		$page = $data->render();
+		// var_dump($page);die;
+		$this->assign('data',$data);
+		$this->assign('page',$page);
+		return $this->fetch();
 	}
 
 	/**
